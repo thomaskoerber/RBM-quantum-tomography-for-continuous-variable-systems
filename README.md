@@ -15,7 +15,7 @@ The description of files
 quantum measurmenet. In addition, the RBM reconstruction is conducted for simulated noisy homodyne measurement data of a single-photon-added coherent state.
 
 2. RBM_tomography_sampling.py - a program in pyhton for performing the RBM quantum state reconstruction, with the option that the gradients of the RBM training 
-are approximated by different methods: (a) a random sampling of the different terms in the gradient's sums, (b) Gibbs sampling of the different terms in the gradient's sums.
+are approximated by different methods: (a) a random sampling of the different terms in the gradient's sums, (b) Gibbs sampling of the different terms in the gradient's sums. This code has not been optimized in terms of run-time.
 
 
 Authorship statement
