@@ -343,10 +343,6 @@ def train_model(theta, x, parameters, overlap, batchsize = 50, learning_rate = 0
     
     assert isinstance(x,np.ndarray), "x is not a numpy array"
 
-    assert len(theta.shape) == 2, "the dimension of theta does not equal 2"
-    
-    assert len(x.shape) == 2, "the dimension of x does not equal 2"
-
     assert x.shape[0] == theta.shape[0], "theta and x have different sizes"
     
     assert batchsize < x.shape[0], "the batchsize is larger than the size of x"
@@ -434,8 +430,7 @@ def SPACS_theory(alp, eta, d, d_k): # generates noisy density matrix from a SPAC
     
     m = np.array(range(d + d_k))
     n = np.array(range(d + d_k))
-    m_rho_n = np.tensordot(np.sqrt(m) * np.concatenate([np.array([1.]),alp ** (m[1:] - 1) / np.sqrt(sc.factorial(m[1:] - 1))]),np.sqrt(n) * np.concatenate([np.array([1.]),np.conjugate(alp ** (n[1:] - 1)) / np.sqrt(sc.factorial(n[1:] - 1))]),axes=0) 
-               * (np.exp(-np.absolute(alp) ** 2) / (1 + np.absolute(alp) ** 2))
+    m_rho_n = np.tensordot(np.sqrt(m) * np.concatenate([np.array([1.]),alp ** (m[1:] - 1) / np.sqrt(sc.factorial(m[1:] - 1))]),np.sqrt(n) * np.concatenate([np.array([1.]),np.conjugate(alp ** (n[1:] - 1)) / np.sqrt(sc.factorial(n[1:] - 1))]),axes=0)   * (np.exp(-np.absolute(alp) ** 2) / (1 + np.absolute(alp) ** 2))
     
     out = np.full((d,d),0. + 1j * 0.)
     for k in range(d_k):
@@ -457,7 +452,7 @@ x_0=np.array(x_0).flatten()
 # initialize weights of RBM
 parameters_0 = initialize_parameters(n_v=2, n_ha=2, n_hp=2, sig=1.)
 # train RBM with simualted data
-parameters_1 = train_model(theta_0, x_0 , parameters_0, homodyne_overlap, batchsize = 100, learning_rate = 0.5, epochs = 20000, verbose = True, nsplit = 10)
+parameters_1 = train_model(theta_0, x_0 , parameters_0, homodyne_overlap, batchsize = 100, learning_rate = 0.5, epochs = 20000, verbose = True, nsplits = 10)
 
 # fidelity between reconstructed and theoretically predicted state
 rho_reconstructed = reconstruct_from_RBM(parameters_1)
