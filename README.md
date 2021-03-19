@@ -20,5 +20,5 @@ are approximated by different methods: (a) a random sampling of the different te
 
 Authorship statement
 -------------------------
-Files 1, 2 have been produced by Thomas Koerber with partial contributions by Valentin Gebhart. The code mainly implements methods described in 
+Files 1, 2 have been produced jointly by Thomas Koerber and Valentin Gebhart. The code mainly implements methods described in 
 E.S. Tiunov et al., Optica 7, 448 (2020).
